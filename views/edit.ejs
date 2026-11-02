@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>메뉴 수정</title>
+</head>
+<body>
+    <h1>메뉴 수정</h1>
+
+    <form action="/menus/<%= menu.id %>/edit" method="POST">
+        <p>
+            메뉴 이름:
+            <input type="text" name="name" value="<%= menu.name %>" required>
+        </p>
+
+        <p>
+            가격:
+            <input type="number" name="price" value="<%= menu.price %>" required>
+        </p>
+
+        <p>
+            카테고리:
+            <select name="category">
+                <option value="커피" <%= menu.category === '커피' ? 'selected' : '' %>>커피</option>
+                <option value="티" <%= menu.category === '티' ? 'selected' : '' %>>티</option>
+                <option value="디저트" <%= menu.category === '디저트' ? 'selected' : '' %>>디저트</option>
+            </select>
+        </p>
+
+        <button type="submit">수정 완료</button>
+    </form>
+
+    <a href="/menus">목록으로 돌아가기</a>
+</body>
+</html>

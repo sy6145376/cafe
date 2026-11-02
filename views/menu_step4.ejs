@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>카페 메뉴 관리</title>
+</head>
+<body>
+    <h1>카페 메뉴 관리</h1>
+
+    <!-- 메뉴 검색 -->
+    <h2>메뉴 검색</h2>
+    <form action="/menus/search" method="GET">
+        <input type="text" name="keyword" placeholder="검색할 메뉴 이름">
+        <button type="submit">검색</button>
+        <a href="/menus">전체 메뉴 보기</a>
+    </form>
+
+    <hr>
+
+    <!-- 메뉴 추가 -->
+    <h2>메뉴 추가</h2>
+    <form action="/menus" method="POST">
+        <input type="text" name="name" placeholder="메뉴 이름" required>
+        <input type="number" name="price" placeholder="가격" required>
+
+        <select name="category">
+            <option value="커피">커피</option>
+            <option value="티">티</option>
+            <option value="디저트">디저트</option>
+        </select>
+
+        <button type="submit">추가</button>
+    </form>
+
+    <hr>
+
+    <!-- 메뉴 목록 -->
+    <h2>전체 메뉴 목록</h2>
+
+    <% menus.forEach(menu => { %>
+        <div>
+            <h3><%= menu.name %></h3>
+            <p>가격: <%= menu.price %>원</p>
+            <p>종류: <%= menu.category %></p>
+
+            <a href="/menus/<%= menu.id %>/edit">[수정]</a>
+
+            <form action="/menus/<%= menu.id %>/delete" method="POST">
+                <button type="submit"
+                    onclick="return confirm('정말 삭제하시겠습니까?')">
+                    삭제
+                </button>
+            </form>
+        </div>
+        <hr>
+    <% }) %>
+</body>
+</html>

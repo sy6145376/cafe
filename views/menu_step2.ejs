@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>카페 메뉴 관리</title>
+</head>
+<body>
+    <h1>카페 메뉴 관리</h1>
+
+    <h2>새 메뉴 추가</h2>
+    <form action="/menus" method="POST">
+        <p>
+            메뉴 이름:
+            <input type="text" name="name" required>
+        </p>
+        <p>
+            가격:
+            <input type="number" name="price" required>
+        </p>
+        <p>
+            카테고리:
+            <select name="category">
+                <option value="커피">커피</option>
+                <option value="티">티</option>
+                <option value="디저트">디저트</option>
+            </select>
+        </p>
+        <button type="submit">메뉴 추가</button>
+    </form>
+
+    <hr>
+
+    <h2>메뉴 목록</h2>
+    <% menus.forEach(menu => { %>
+        <p>
+            <%= menu.name %> /
+            <%= menu.price %>원 /
+            <%= menu.category %>
+        </p>
+    <% }) %>
+</body>
+</html>
