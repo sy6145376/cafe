@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>카페 메뉴 관리</title>
+</head>
+<body>
+    <h1>카페 메뉴 관리</h1>
+
+    <table border="1">
+        <tr>
+            <th>번호</th>
+            <th>메뉴</th>
+            <th>가격</th>
+            <th>종류</th>
+        </tr>
+
+        <% menus.forEach(menu => { %>
+        <tr>
+            <td><%= menu.id %></td>
+            <td><%= menu.name %></td>
+            <td><%= menu.price %></td>
+            <td><%= menu.category %></td>
+        </tr>
+        <% }) %>
+    </table>
+</body>
+</html>
